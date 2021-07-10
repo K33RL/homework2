@@ -42,7 +42,7 @@ public class MyCollection<T> {
     public Object get(int index) {
 
         if (size == 0 || index >= size || index < 0) {
-            throw new IndexOutOfBoundsException(index);
+            throw new MyException(index);
         }
         ObjectBox<T> current = head;
 

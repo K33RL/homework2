@@ -1,7 +1,8 @@
 package com.homework;
 
 public class MyException extends IndexOutOfBoundsException {
-    public MyException(){
-        super();
+
+    public MyException(int index) {
+        super(index);
     }
 }

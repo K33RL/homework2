@@ -1,14 +1,13 @@
 import com.homework.MyCollection;
-import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 import org.junit.Test;
 
 /**
  * Test class for {@link com.homework.MyCollection}
  */
-@Log4j
-public class MyCollectionTest {
 
-    private static final org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(MyCollectionTest.class);
+@Log4j2
+public class MyCollectionTest {
 
     MyCollection<String> collection = new MyCollection<>();
 
@@ -27,15 +26,18 @@ public class MyCollectionTest {
 
     @Test
     public void pushElements() {
+
         addElements();
         while (collection.size() > 0) {
             String s = (String) collection.pull();
         }
+
     }
 
     @Test(expected = Exception.class)
-    public void getEx(){
+    public void getEx() {
+        log.error("MyException here : " + Thread.currentThread().getStackTrace()[1].getMethodName());
         addElements();
-        System.out.println(collection.get(12));
+        System.err.println(collection.get(12));
     }
 }
