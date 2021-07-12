@@ -1,5 +1,6 @@
 import com.homework.MyCollection;
 import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.Level;
 import org.junit.Test;
 
 /**
@@ -26,7 +27,6 @@ public class MyCollectionTest {
 
     @Test
     public void pushElements() {
-
         addElements();
         while (collection.size() > 0) {
             String s = (String) collection.pull();
@@ -36,8 +36,8 @@ public class MyCollectionTest {
 
     @Test(expected = Exception.class)
     public void getEx() {
-        log.error("MyException here : " + Thread.currentThread().getStackTrace()[1].getMethodName());
+        log.error("MyException here : " + Thread.currentThread().getStackTrace()[1].getMethodName(), Level.INFO);
         addElements();
-        System.err.println(collection.get(12));
+        System.out.println(collection.get(12));
     }
 }

@@ -26,7 +26,7 @@ public class MyCollection<T> {
         if (size == 0) {
             return null;
         }
-        T object = (T) head.getObject();
+        T object = head.getObject();
         head = head.getNext();
         if (head == null) {
             tail = null;
@@ -58,7 +58,7 @@ public class MyCollection<T> {
 
     @Data
     private class ObjectBox<T> {
-        private Object object;
+        private T object;
         private ObjectBox next;
     }
 }
