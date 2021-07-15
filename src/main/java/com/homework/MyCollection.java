@@ -1,6 +1,7 @@
 package com.homework;
 
 import lombok.Data;
+import lombok.SneakyThrows;
 
 public class MyCollection<T> {
 
@@ -26,7 +27,7 @@ public class MyCollection<T> {
         if (size == 0) {
             return null;
         }
-        T object = (T) head.getObject();
+        T object = head.getObject();
         head = head.getNext();
         if (head == null) {
             tail = null;
@@ -37,6 +38,22 @@ public class MyCollection<T> {
 
     public int size() {
         return size;
+    }
+
+    @SneakyThrows
+    public void removeAll() {
+        if (size == 0) {
+            throw new EmptyQueueException();
+        }
+        while (size != 0 || head != null){
+            T object = head.getObject();
+            head = head.getNext();
+            size--;
+        }
+        tail = null;
+
+
+
     }
 
     public Object get(int index) {
@@ -58,7 +75,7 @@ public class MyCollection<T> {
 
     @Data
     private class ObjectBox<T> {
-        private Object object;
+        private T object;
         private ObjectBox next;
     }
 }
